@@ -151,6 +151,9 @@ def admin_logout(request):
     
     return redirect('login_form1')
 
+def samplee(request):
+    return render(request,'sapmlee.html')
+
 
  
 

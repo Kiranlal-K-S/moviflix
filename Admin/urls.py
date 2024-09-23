@@ -17,4 +17,5 @@ urlpatterns=[
     path('view_cast/<int:film_id>',views.view_cast,name='view_cast'),
     path('delete_cast/<int:cast_id>',views.delete_cast,name='delete_cast'),
     path('admin_logout',views.admin_logout,name='admin_logout'),
+    path('samplee',views.samplee,name='samplee')
 ]
