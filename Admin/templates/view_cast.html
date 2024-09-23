@@ -1,0 +1,21 @@
+{% extends 'admin_index.html' %}
+{% block content %}
+<div class="container">
+    <br>
+<div class="row">
+    
+        {% for i in cast %}
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 mb-3 d-flex justify-content-center">
+        <div class="card" style="width: 12rem; height: 21rem;">
+            <img src="{{i.actor_image.url}}" class="card-img-top" >
+            <div class="card-body">
+              <p class="card-text" style="text-align: center;">{{i.actor_name}}</p>
+              <a href="{% url 'delete_cast' i.id %}"><button type="button" class="btn btn-danger" style="margin-bottom: 2px; margin-left: 25%;">Delete</button></a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+#form-container{
+    display: flex;
+    justify-content: center;
+    height: 486px;
+    width: 430px;
+    border-radius: 12px;
+    border: 1px solid black;
+    margin-top: 30px;
+    padding-left: 30px;
+}
+#form{
+    display: flex;
+    justify-content: center;
+}
+#form_heading{
+    position: absolute;
+    left: 46%;
+    text-decoration-line: underline;
+}
+#main_container{
+    background-color: lightsalmon;
+    height: 700px;
+}
+#card{
+    position: fixed;
+    right: 0;
+}
+
+#card1{
+    border-radius: 12px;
+}
+#video{
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    left: 50%;
+
+}
+#vide-con{
+    margin-left: 50px;
+}
+body{
+    padding-bottom: 0%;
+}

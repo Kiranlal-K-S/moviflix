@@ -1,0 +1,28 @@
+{% extends 'user_home.html' %}
+
+{% block content %}
+{% for i in name %}
+<h1 style="text-align: center;"> {{i.genre_name}}</h1>
+{% endfor %}
+<div class="row">
+{% for i in details  %}
+<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 mb-4 d-flex justify-content-center">
+  <div class="card shadow-lg" style="width: 18rem; border-radius: 15px; border: none; overflow: hidden;">
+      <img src="{{i.film_tumbnail.url}}" class="card-img-top" alt="Film Thumbnail" style="height: 250px; ">
+      <div class="card-body text-center">
+          <h5 class="card-title mb-3" style="color: #333; font-weight: bold;">{{i.film_name}}</h5>
+          <p>{{ i.film_description|truncatechars:48 }}</p>
+          <a href="{% url 'watch_film' i.id %}" class="btn btn-primary mb-2" style="width: 80%; border-radius: 25px; background-color: #FF4500; border: none;">
+              Watch Now
+          </a>
+          <a href="{% url 'add_watchlist' i.id %}" class="btn btn-outline-primary" style="width: 80%; border-radius: 25px; color: #FF4500; border: 2px solid #FF4500;">
+              Watch Later
+          </a>
+      </div>
+  </div>
+</div>
+{% endfor %}
+</div>
+
+
+{% endblock %}

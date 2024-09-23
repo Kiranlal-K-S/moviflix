@@ -1,0 +1,31 @@
+{% extends 'admin_index.html' %}
+{% block content %}
+<h2 id="form_heading" style="position: absolute;left: 50%;"><b>View Film</h2><br>
+    <br><br><br>
+
+<table class="table table-dark table-striped">
+    <tr>
+        <th>Film Name</th>
+        <th>Film Description</th>
+        <th>Film Tumbnail</th>
+        <th>Film</th>
+        <th>Genres</th>
+    </tr>
+    {% for i in cinema_details %}
+    <tr>
+        <td>{{i.film_name}}</td>
+        <td>{{i.film_description|truncatechars:50 }}</td>
+        <td><img src="{{i.film_tumbnail.url}}" alt="tpc" width="80px" height="50px"></td>
+        <td><video src="{{i.film.url}}" width="80px" height="50px"></video></td>
+        <td>{{i.genre_id.genre_name}}</td>
+        <td><a href="{% url 'update' i.id %}"><button type="button" class="btn btn-success">Update</button></a></td>
+        <td><a href="{% url 'cinema_delete' i.id %}"><button type="button" class="btn btn-danger">Delete</button></a></td>
+        <td><a href="{% url 'add_cast' i.id %}"><button type="button" class="btn btn-primary">Add Cast</button></a></td>
+        <td><a href="{% url 'view_cast' i.id %}"><button type="button" class="btn btn-primary">View Cast</button></a></td>
+
+    {% endfor %}
+    </tr>
+</table>
+
+
+{% endblock %}

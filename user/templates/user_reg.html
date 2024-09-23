@@ -1,0 +1,37 @@
+{% extends 'login_form1.html' %}
+{% block content %}
+<br><br>
+<h1 style="text-align: center; font-family: 'Arial', sans-serif; color: #FFA500; font-weight: bold; letter-spacing: 2px;">User Register</h1>
+<br>
+<div class="row" style="display: flex; justify-content: center;">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6 col-xl-4" style="background-color: #FFF3E0; padding: 30px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); position: relative;">
+        <form action="{% url 'user_register' %}" method="post" style="display: flex; flex-direction: column;">
+            {% csrf_token %}
+            <label for="u_name" style="color: #FFA500; font-size: 1.1em; margin-bottom: 5px;">Name</label>
+            <input type="text" name="u_name" id="u_name" placeholder="Name" style="padding: 10px; border-radius: 8px; border: 1px solid #FFA500; margin-bottom: 15px;">
+
+            <label for="u_email" style="color: #FFA500; font-size: 1.1em; margin-bottom: 5px;">Email</label>
+            <input type="email" name="u_email" id="u_email" placeholder="Email" style="padding: 10px; border-radius: 8px; border: 1px solid #FFA500; margin-bottom: 15px;">
+            
+            <label for="u_password" style="color: #FFA500; font-size: 1.1em; margin-bottom: 5px;">Password</label>
+            <input type="password" name="u_password" id="u_password" placeholder="Password" style="padding: 10px; border-radius: 8px; border: 1px solid #FFA500; margin-bottom: 15px;">
+
+            <label for="c_u_password" style="color: #FFA500; font-size: 1.1em; margin-bottom: 5px;">Confirm Password</label>
+            <input type="password" name="c_u_password" id="c_u_password" placeholder="Confirm password" style="padding: 10px; border-radius: 8px; border: 1px solid #FFA500; margin-bottom: 15px;">
+
+            <label for="u_number" style="color: #FFA500; font-size: 1.1em; margin-bottom: 5px;">Phone No</label>
+            <input type="number" name="u_number" id="u_number" placeholder="Phone Number" style="padding: 10px; border-radius: 8px; border: 1px solid #FFA500; margin-bottom: 15px;">
+
+            <label for="u_address" style="color: #FFA500; font-size: 1.1em; margin-bottom: 5px;">Address</label>
+            <input type="text" name="u_address" id="u_address" placeholder="Address" style="padding: 10px; border-radius: 8px; border: 1px solid #FFA500; margin-bottom: 20px;">
+
+            <button type="submit" class="btn btn-outline-dark" style="width: 100%; padding: 10px; border-radius: 8px; background-color: #FFA500; color: #FFF; font-size: 1.2em; font-weight: bold; border: none; transition: background-color 0.3s;">
+                Register
+            </button>
+        </form>
+        <a href="{% url 'login_form1' %}" style="color: #FFA500; font-size: 0.9em; text-align: center; margin-top: 20px; display: block;">Already have an account? Login</a>
+    </div>
+</div>
+<br><br>
+
+{% endblock %}

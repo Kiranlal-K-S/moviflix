@@ -1,0 +1,143 @@
+{% extends 'user_home.html' %}
+
+{% block content %}
+<!-- <div class="row" >
+    <div class="container" ></div>
+    <br><br><br>
+    {% for i in details %}
+    <div class="row" style="display: flex; justify-content: center; margin-left: 4%;">
+        <div class="card" style="width: 60rem;" >
+            <video controls autoplay muted > <source src="{{i.film.url}}"  ></video>
+            <div class="card-body"  >
+              <h4 class="card-title" style="margin-left: 1.7%;">Film:&nbsp;{{i.film_name}}</h4>
+              <h6 style="margin-left: 1.7%; font-size: 15px;">Description:&nbsp;{{i.film_description}}</h6>
+              {% if user_liked %}
+                <a href="{% url 'like' i.id %}"> <i  class="fa fa-thumbs-up" style="margin-left: 2%; margin-top:2%; color: #ff0000;"></i> </a>
+              {% else %}
+                <a href="{% url 'like' i.id %}"> <i  class="fa fa-thumbs-up" style="margin-left: 2%; margin-top:2%; color: #000000;"></i> </a>
+              {% endif %}
+                {{ l_count }}
+                {% if user_disliked %}
+              <a href="{% url 'dislike' i.id %}"> <i  class="fa fa-thumbs-down" style="margin-left: 2%; margin-top:2%; color: #ff0000"></i> </a>  
+                {% else %}
+                <a href="{% url 'dislike' i.id %}"> <i  class="fa fa-thumbs-down" style="margin-left: 2%; margin-top:2%; color: #000000"></i> </a>
+                {% endif %}  
+              {{ d_count }} <br><br>
+              <div class="row">
+                <h5 style="margin-left: 1.7%;">Cast:</h5>
+                {% for i in cast %}
+              <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 col-xl-3" style="display: flex; justify-content: center;">
+                <div class="card" style="width: 9rem;">
+                  <img src="{{i.actor_image.url}}" class="card-img-top" alt="actor image" style="height: 10rem;">
+                  <div class="card-body">
+                    <p class="card-text">{{i.actor_name}}</p>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+              </div><br><br>
+              <form action="{% url 'watch_film' i.id %}" method="post">
+                {% csrf_token %}
+              <div class="mb-3">
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="border: 1px solid black; " placeholder="comment" name="user_comment" ></textarea>
+              </div>
+              <button type="button" class="btn btn-outline-secondary">Comment</button>
+              </form>
+              <br><br>
+              <ul>
+              {% for i in comment %}
+              <li>
+              <p class="card-text"><b>{{i.user_id.u_name}}</b><br>{{i.user_comment}}<br> <small>{{i.date}}</small></p><hr>
+              </li>
+              {% endfor %}
+            </ul>
+            </div>
+          </div>
+        
+        </div>
+        {% endfor %}
+     </div>
+     
+    
+        
+    </div>
+</div> -->
+<div class="container mt-5">
+  {% for i in details %}
+  <div class="row justify-content-center mb-5">
+      <div class="card shadow-lg" style="width: 60rem; border-radius: 15px; overflow: hidden;">
+          <video controls autoplay muted style="width: 100%; border-bottom: 2px solid #ddd;">
+              <source src="{{i.film.url}}">
+          </video>
+          <div class="card-body">
+              <h4 class="card-title text-center my-3" style="color: #333;">Film: {{i.film_name}}</h4>
+              <p class="text-center" style="font-size: 1.1em; color: #555;">{{i.film_description}}</p>
+              
+              <div class="d-flex justify-content-center align-items-center my-4">
+                  {% if user_liked %}
+                  <a href="{% url 'like' i.id %}">
+                      <i class="fa fa-thumbs-up" style="color: #ff4500; font-size: 1.5em;"></i>
+                  </a>
+                  {% else %}
+                  <a href="{% url 'like' i.id %}">
+                      <i class="fa fa-thumbs-up" style="color: #999; font-size: 1.5em;"></i>
+                  </a>
+                  {% endif %}
+                  <span class="mx-3" style="font-size: 1.2em;">{{ l_count }}</span>
+                  
+                  {% if user_disliked %}
+                  <a href="{% url 'dislike' i.id %}">
+                      <i class="fa fa-thumbs-down" style="color: #ff4500; font-size: 1.5em;"></i>
+                  </a>
+                  {% else %}
+                  <a href="{% url 'dislike' i.id %}">
+                      <i class="fa fa-thumbs-down" style="color: #999; font-size: 1.5em;"></i>
+                  </a>
+                  {% endif %}
+                  <span class="mx-3" style="font-size: 1.2em;">{{ d_count }}</span>
+              </div>
+              
+              <div class="row justify-content-center">
+                  <h5 class="text-center" style="color: #333;">Cast:</h5>
+                  {% for i in cast %}
+                  <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 text-center my-2">
+                      <div class="card" style="border: none;">
+                          <img src="{{i.actor_image.url}}" class="card-img-top rounded-circle shadow" alt="actor image" style="height: 120px; width: 120px; object-fit: cover;">
+                          <div class="card-body">
+                              <p class="card-text">{{i.actor_name}}</p>
+                          </div>
+                      </div>
+                  </div>
+                  {% endfor %}
+              </div>
+              
+              <div class="mt-4">
+                  <form action="{% url 'watch_film' i.id %}" method="post">
+                      {% csrf_token %}
+                      <div class="mb-3">
+                          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Leave a comment" name="user_comment" style="border-radius: 8px; padding: 10px; border: 1px solid #ccc;"></textarea>
+                      </div>
+                      <button type="submit" class="btn btn-outline-secondary w-100" style="border-radius: 8px;">Comment</button>
+                  </form>
+              </div>
+              
+              <ul class="list-unstyled mt-4">
+                  {% for i in comment %}
+                  <li class="mb-3">
+                      <p class="card-text">
+                          <strong  style="display: flex; justify-content: space-between;"><b>{{i.user_id.u_name}}</b></strong> <small class="text-muted" style="display: flex; justify-content: end;">{{i.date}}</small><br>
+                          {{i.user_comment}}<br>
+                          
+                      </p>
+                      <hr>
+                  </li>
+                  {% endfor %}
+              </ul>
+          </div>
+      </div>
+  </div>
+  {% endfor %}
+</div>
+
+
+{% endblock %}
